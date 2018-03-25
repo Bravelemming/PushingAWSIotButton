@@ -17,7 +17,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 # -- GPIO PIN SETUP --
-button = 1
+button = 17
 GPIO.setup(button, GPIO.IN)
 
 #yellowled = 14

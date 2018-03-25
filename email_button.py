@@ -23,13 +23,12 @@ GPIO.setwarnings(False)
 button = 18 #GPIO 18 (PIN #12)
 GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-def emailOnButton():
+def emailOnButton(toaddr):
     '''emailOnButton(): null -> null
     Expects nothing, returns nothing, has the side effects of
     sending an email to mlemos@humboldt.edu'''
     
     fromaddr = 'andthenraspi@gmail.com'
-    toaddr = 'mlemos@humboldt.edu'
 	
     msg = MIMEMultipart()
     msg['From'] = fromaddr
@@ -54,7 +53,10 @@ try:
         input_value = GPIO.input(button)
         if input_value == False:
             print('The button has been pressed...')
-            emailOnButton()
+            emailOnButton('mlemos@humboldt.edu')
+            #emailOnButton('adam.carter@humboldt.edu')
+            #emailOnButton('kpa2@humboldt.edu')
+            #emailOnButton('dave@humboldt.edu')
             time.sleep(0.2)
 finally:
     print("cleaning")

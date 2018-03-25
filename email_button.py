@@ -36,7 +36,7 @@ def emailOnButton(toaddr, printer_id, location, subject):
     msg['Subject'] = subject
     #msg['Subject'] = "Printer Help Request"
 	
-    body = "Send help to printer station" + printer_id + ' located: ' + location + 'has requested help!'
+    body = "Send help to printer station " + printer_id + ' located: ' + location + ' has requested help!'
     msg.attach(MIMEText(body, 'plain'))
 	
     server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -56,9 +56,9 @@ try:
             print('The button has been pressed...')
             #emailOnButton('mlemos@humboldt.edu')
             emailOnButton('mlemos@humboldt.edu', '54b7894', 'Library floor 2', "We have pushed Dave's button.")
-            #emailOnButton('adam.carter@humboldt.edu', '54b7894', 'Library floor 2', "We have pushed Dave's button.")
-            #emailOnButton('kpa2@humboldt.edu', '54b7894', 'Library floor 2', "We have pushed Dave's button.")
-            #emailOnButton('dave@humboldt.edu', '54b7894', 'Library floor 2', "We have pushed Dave's button.")
+            emailOnButton('adam.carter@humboldt.edu', '54b7894', 'Library floor 2', "We have pushed Dave's button.")
+            emailOnButton('kpa2@humboldt.edu', '54b7894', 'Library floor 2', "We have pushed Dave's button.")
+            emailOnButton('dave@humboldt.edu', '54b7894', 'Library floor 2', "We have pushed Dave's button.")
 
             time.sleep(0.2)
 finally:

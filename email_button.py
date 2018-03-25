@@ -28,21 +28,21 @@ def emailOnButton():
     Expects nothing, returns nothing, has the side effects of
     sending an email to mlemos@humboldt.edu'''
     
-	fromaddr = 'andthenraspi@gmail.com'
-	toaddr = 'mlemos@humboldt.edu'
+    fromaddr = 'andthenraspi@gmail.com'
+    toaddr = 'mlemos@humboldt.edu'
 	
-	msg = MIMEMultipart()
-	msg['From'] = fromaddr
-	msg['To'] = toaddr
-	msg['Subject'] = "Printer Help Request"
+    msg = MIMEMultipart()
+    msg['From'] = fromaddr
+    msg['To'] = toaddr
+    msg['Subject'] = "Printer Help Request"
 	
-	body = "Send help to printer station!"
-	msg.attach(MIMEText(body, 'plain'))
+    body = "Send help to printer station!"
+    msg.attach(MIMEText(body, 'plain'))
 	
-	server = smtplib.SMTP('smtp.gmail.com', 587)
+    server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
     server.login(fromaddr,'ghostinthemachine')
-	text = msg.as_string()
+    text = msg.as_string()
 	
     server.sendmail(fromaddr, toaddr,text)
     server.quit()

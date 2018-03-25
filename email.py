@@ -26,13 +26,19 @@ GPIO.setup(button, GPIO.IN)
 # -- -- -- -- -- --
 # Listen for button click
 
-while True:
-    input_value = gpio.input(button)
-    if input_value == False:
-        print('The button has been pressed...')
-        emailOnButton()
-        while input_value == False:
-            input_value = gpio.input(31)
+try:
+    while True:
+        input_value = gpio.input(button)
+        if input_value == False:
+            print('The button has been pressed...')
+            emailOnButton()
+            while input_value == False:
+                input_value = gpio.input(31)
+finally:
+    print("cleaning")
+    # cleanup on normal exit
+    GPIO.cleanup()
+    print("cleaned")
 
 # emailOnButton(): null -> null
 # Expects nothing, returns nothing, has the side effects of
@@ -51,6 +57,3 @@ def emailOnButton():
     # GPIO.output(yellowled, 1)
     # time.sleep(5)
     # GPIO.output(yellowled, 0)
-
-    # cleanup on normal exit
-    GPIO.cleanup()

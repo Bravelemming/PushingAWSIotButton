@@ -1,5 +1,8 @@
 # Generate Email from Raspberry Pi GPIO button press
-#
+# HSU LumberHacks Hackathon
+# Team: Pressing Dave's button
+# Contributors: Jack Kinne, Sam Alston, Max Lemos, Nathan Ortolan
+# Last Modified: 3/24/18
 
 # Standard time library
 import time
@@ -14,12 +17,26 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 # -- GPIO PIN SETUP --
+button = 31
+GPIO.setup(button, GPIO.IN)
 
-yellowled = 14
-GPIO.setup(yellowled, GPIO.OUT)
+#yellowled = 14
+#GPIO.setup(yellowled, GPIO.OUT)
 
-# -- ---  -- -- -- --
+# -- -- -- -- -- --
+# Listen for button click
 
+while True:
+    input_value = gpio.input(button)
+    if input_value == True:
+        print('The button has been pressed...')
+        emailOnButton()
+        while input_value == False:
+            input_value = gpio.input(31)
+
+# emailOnButton(): null -> null
+# Expects nothing, returns nothing, has the side effects of
+# sending an email to nathan@humboldt.edu
 
 def emailOnButton():
     # email to myself
@@ -31,9 +48,9 @@ def emailOnButton():
     server.quit()
 
     # light up LED
-    GPIO.output(yellowled, 1)
-    time.sleep(5)
-    GPIO.output(yellowled, 0)
+    # GPIO.output(yellowled, 1)
+    # time.sleep(5)
+    # GPIO.output(yellowled, 0)
 
-# cleanup on normal exit
+    # cleanup on normal exit
     GPIO.cleanup()

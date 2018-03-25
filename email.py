@@ -1,8 +1,5 @@
-# SQL ENQUIRY + GPIO LED DISPLAY.  Jack Daniel Kinne.
-# THis SQL Enquiry searches for any mention of "cats" 
-# across multiple sub reddits with at least 15 likes.
-# It outputs title and subreddit as an automated email 
-# and updates the SQL DB entry emailed = "yes"
+# Generate Email from Raspberry Pi GPIO button press
+#
 
 # Standard time library
 import time

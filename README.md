@@ -22,17 +22,18 @@
 10. Check for the generated email!
 
 ## Raspberry Pi Button
-Using: * Pi 2 Model B Rev 1.1 running Raspbian
-         * Breadboard
-         * 2 GPIO Jumper Wires (Power and Ground)
-         * 1 GPIO Breadboard 4-Pin Button
-         * Python 2.7
-         * Libraries:
-            * time - Python time
-            * RPi.GPIO - GPIO Control
-            * smtplib - Python email
-            * MIMEMultipart - More complete emails (subject line)
-            * MIMEText - More complete emails (subject line)
+Using:
+   * Pi 2 Model B Rev 1.1 running Raspbian
+   * Breadboard
+   * 2 GPIO Jumper Wires (Power and Ground)
+   * 1 GPIO Breadboard 4-Pin Button
+   * Python 2.7
+   * Libraries:
+      * time - Python time
+      * RPi.GPIO - GPIO Control
+      * smtplib - Python email
+      * MIMEMultipart - More complete emails (subject line)
+      * MIMEText - More complete emails (subject line)
 
 ### Hardware Setup
 1. Attach the Jumper Wires from GPIO Pins to Breadboard

@@ -17,7 +17,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 # -- GPIO PIN SETUP --
-button = 31
+button = 1
 GPIO.setup(button, GPIO.IN)
 
 #yellowled = 14
@@ -28,12 +28,12 @@ GPIO.setup(button, GPIO.IN)
 
 try:
     while True:
-        input_value = gpio.input(button)
+        input_value = GPIO.input(button)
         if input_value == False:
             print('The button has been pressed...')
-            emailOnButton()
+            # emailOnButton()
             while input_value == False:
-                input_value = gpio.input(31)
+                input_value = GPIO.input(button)
 finally:
     print("cleaning")
     # cleanup on normal exit

@@ -10,6 +10,9 @@ import time
 import RPi.GPIO as GPIO
 # Email
 import smtplib
+# To email complex messages (including subject line)
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
 
 # Board = BCM
 GPIO.setmode(GPIO.BCM)
@@ -24,12 +27,24 @@ def emailOnButton():
     '''emailOnButton(): null -> null
     Expects nothing, returns nothing, has the side effects of
     sending an email to mlemos@humboldt.edu'''
-
-    server = smtplib.SMTP('smtp.gmail.com', 587)
+    
+	fromaddr = 'andthenraspi@gmail.com'
+	toaddr = 'mlemos@humboldt.edu'
+	
+	msg = MIMEMultipart()
+	msg['From'] = fromaddr
+	msg['To'] = toaddr
+	msg['Subject'] = "Printer Help Request"
+	
+	body = "Send help to printer station!"
+	msg.attach(MIMEText(body, 'plain'))
+	
+	server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login('andthenraspi@gmail.com','ghostinthemachine')
-    msg = "Send help to printer station!"
-    server.sendmail('andthenraspi@gmail.com','mlemos@humboldt.edu','Printer Help Request')
+    server.login(fromaddr,'ghostinthemachine')
+	text = msg.as_string()
+	
+    server.sendmail(fromaddr, toaddr,text)
     server.quit()
 
 # -- -- -- -- -- --

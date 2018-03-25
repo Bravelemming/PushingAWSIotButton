@@ -29,7 +29,7 @@ GPIO.setup(button, GPIO.IN)
 try:
     while True:
         input_value = GPIO.input(button)
-        if input_value == True:
+        if input_value == False:
             print('The button has been pressed...')
             # emailOnButton()
             while input_value == False:

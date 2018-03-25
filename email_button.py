@@ -30,7 +30,7 @@ def emailOnButton():
     server.starttls()
     server.login('andthenraspi@gmail.com','ghostinthemachine')
     msg = "Send help to printer station!"
-    server.sendmail('andthenraspi@gmail.com','bravelemming@gmail.com','Printer Help Request')
+    server.sendmail('andthenraspi@gmail.com','mlemos@humboldt.edu','Printer Help Request')
     server.quit()
 
     # light up LED

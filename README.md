@@ -38,6 +38,7 @@
 1. Attach the Jumper Wires from GPIO Pins to Breadboard
   * Power - GPIO \#18 (PIN \#12) -> Breadboard \#1B
   * Ground - GPIO \#39 (PIN GND) -> Breadboard \#2B
+  * *Use this [guide](http://www.raspberry-projects.com/pi/pi-hardware/raspberry-pi-2-model-b/rpi2-model-b-io-pins) for GPIO Pins*
 2. Attach the 4-Pin Button to Breadboard Pins \#1C, \#1F, \#3C, \#3F
 3. Power on the Raspberry Pi
 

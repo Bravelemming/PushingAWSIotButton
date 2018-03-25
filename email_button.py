@@ -14,7 +14,7 @@ import smtplib
 # Board = BCM
 GPIO.setmode(GPIO.BCM)
 # No warnings, thanks!
-GPIO.setwarnings(True)
+GPIO.setwarnings(False)
 
 # -- GPIO PIN SETUP --
 button = 18 #GPIO 18 (PIN #12)
@@ -23,8 +23,7 @@ GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 def emailOnButton():
     '''emailOnButton(): null -> null
     Expects nothing, returns nothing, has the side effects of
-    sending an email to nathan@humboldt.edu
-    email to myself'''
+    sending an email to mlemos@humboldt.edu'''
 
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
@@ -33,17 +32,8 @@ def emailOnButton():
     server.sendmail('andthenraspi@gmail.com','mlemos@humboldt.edu','Printer Help Request')
     server.quit()
 
-    # light up LED
-    # GPIO.output(yellowled, 1)
-    # time.sleep(5)
-    # GPIO.output(yellowled, 0)
-
-#yellowled = 14
-#GPIO.setup(yellowled, GPIO.OUT)
-
 # -- -- -- -- -- --
-# Listen for button click
-
+# Listen for button click and call emailOnButton()
 try:
     while True:
         input_value = GPIO.input(button)

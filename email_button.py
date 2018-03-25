@@ -23,7 +23,7 @@ GPIO.setwarnings(False)
 button = 18 #GPIO 18 (PIN #12)
 GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-def emailOnButton(toaddr):
+def emailOnButton(toaddr, printer_id, location, subject):
     '''emailOnButton(): null -> null
     Expects nothing, returns nothing, has the side effects of
     sending an email to mlemos@humboldt.edu'''
@@ -33,9 +33,10 @@ def emailOnButton(toaddr):
     msg = MIMEMultipart()
     msg['From'] = fromaddr
     msg['To'] = toaddr
-    msg['Subject'] = "Printer Help Request"
+    msg['Subject'] = subject
+    #msg['Subject'] = "Printer Help Request"
 	
-    body = "Send help to printer station!"
+    body = "Send help to printer station" + printer_id + ' located: ' + location + 'has requested help!'
     msg.attach(MIMEText(body, 'plain'))
 	
     server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -53,10 +54,12 @@ try:
         input_value = GPIO.input(button)
         if input_value == False:
             print('The button has been pressed...')
-            emailOnButton('mlemos@humboldt.edu')
-            #emailOnButton('adam.carter@humboldt.edu')
-            #emailOnButton('kpa2@humboldt.edu')
-            #emailOnButton('dave@humboldt.edu')
+            #emailOnButton('mlemos@humboldt.edu')
+            emailOnButton('mlemos@humboldt.edu', '54b7894', 'Library floor 2', "We have pushed Dave's button.")
+            #emailOnButton('adam.carter@humboldt.edu', '54b7894', 'Library floor 2', "We have pushed Dave's button.")
+            #emailOnButton('kpa2@humboldt.edu', '54b7894', 'Library floor 2', "We have pushed Dave's button.")
+            #emailOnButton('dave@humboldt.edu', '54b7894', 'Library floor 2', "We have pushed Dave's button.")
+
             time.sleep(0.2)
 finally:
     print("cleaning")

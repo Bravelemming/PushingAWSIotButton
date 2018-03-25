@@ -14,11 +14,11 @@ import smtplib
 # Board = BCM
 GPIO.setmode(GPIO.BCM)
 # No warnings, thanks!
-GPIO.setwarnings(False)
+GPIO.setwarnings(True)
 
 # -- GPIO PIN SETUP --
 button = 1
-GPIO.setup(button, GPIO.IN)
+GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 #yellowled = 14
 #GPIO.setup(yellowled, GPIO.OUT)
@@ -32,8 +32,7 @@ try:
         if input_value == False:
             print('The button has been pressed...')
             # emailOnButton()
-            while input_value == False:
-                input_value = GPIO.input(button)
+            time.sleep(0.2)
 finally:
     print("cleaning")
     # cleanup on normal exit
